@@ -4,8 +4,18 @@ import app from "./base.js";
 import { AuthContext } from "./Auth.js";
 import 'antd/dist/antd.css';
 import './index.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import './App.css';
+import { Form, Input, Button, Checkbox,Card ,Tag} from 'antd';
+import { HomeOutlined, } from '@ant-design/icons';
+import { bounce } from 'react-animations';
+import Radium, {StyleRoot} from 'radium';
 
+const styles = {
+  bounce: {
+    animation: 'x 1s',
+    animationName: Radium.keyframes(bounce, 'bounce')
+  }
+}
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -37,7 +47,7 @@ const Login = ({ history }) => {
     <Form
       name="basic"
       labelCol={{
-        span: 8,
+        span: 5,
       }}
       wrapperCol={{
         span: 16,
@@ -93,27 +103,33 @@ const Login = ({ history }) => {
         }}
       >
         <Button type="primary" htmlType="submit">
-          Submit
+          Log In
         </Button>
       </Form.Item>
     </Form>
   )
   return (
     <div>
-      <h1>Stealth Apartment Project</h1>
-      <h3>If you are not Kaushik || Subham. Please Don't Login</h3>
+      <Card>
+          <StyleRoot>
+      <div class="center_spin" style={styles.bounce}>
+      <Tag style={{
+                  'height': '3rem',
+                  'padding': '0.7rem',
+                  'fontSize': '0.8rem',
+                  'textAlign': 'center'
+                }} icon={<HomeOutlined />} color="#108ee9">
+                        Stealth Apartment Project   
+      
+      <Tag style={{marginLeft:'1rem'}}color="error">If you are not Kaushik || Subham || Binod. Please Don't Login</Tag>
+                </Tag>
+
+      </div>
+    </StyleRoot>
+      
+     
       {renderForm()}
-      {/* <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Log in</button>
-      </form> */}
+      </Card>
     </div>
   );
 };
