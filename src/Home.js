@@ -6,12 +6,12 @@ import { LogoutOutlined, RightCircleOutlined, HomeOutlined, TableOutlined, InfoC
 import './App.css';
 import _ from 'lodash'
 import { ALL_APPARTMENTS_FETCH_LINK, getJSONFromLink, openLinkInNewTab } from "./utils";
-import { JsonEditor as Editor } from 'jsoneditor-react';
-import 'jsoneditor-react/es/editor.min.css';
+import JSONInput from 'react-json-editor-ajrm';
+import locale from 'react-json-editor-ajrm/locale/en';
 import { apartmentMockData } from "./MockAppData";
 
 const renderAppartments = (ApartmentsData) => {
-  return ApartmentsData.map(item => (
+  return ApartmentsData.map((item, index) => (
     <div class="row">
       <div class="column">
         <div class="card">
@@ -43,9 +43,11 @@ const renderAppartments = (ApartmentsData) => {
                   View in Map
                 </Button>
                 <Popover content={
-                  <Editor
-                    value={item}
-                    theme="ace/theme/github"
+                  <JSONInput
+                    id={index}
+                    placeholder={item}
+                    locale={locale}
+                    height='550px'
                   />}>
                   <Button type="primary" shape="circle" icon={<InfoCircleTwoTone />} />
                 </Popover>
