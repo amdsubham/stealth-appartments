@@ -2,29 +2,27 @@ import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
-import 'antd/dist/antd.css';
-import './index.css';
-import './App.css';
-import { Form, Input, Button, Checkbox,Card ,Tag} from 'antd';
-import { HomeOutlined, } from '@ant-design/icons';
-import { bounce } from 'react-animations';
-import Radium, {StyleRoot} from 'radium';
+import "antd/dist/antd.css";
+import "./index.css";
+import "./App.css";
+import { Form, Input, Button, Checkbox, Card, Tag } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
+import { bounce } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 const styles = {
   bounce: {
-    animation: 'x 1s',
-    animationName: Radium.keyframes(bounce, 'bounce')
-  }
-}
+    animation: "x 1s",
+    animationName: Radium.keyframes(bounce, "bounce"),
+  },
+};
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
-    async event => {
+    async (event) => {
       const { email, password } = event;
       try {
-        await app
-          .auth()
-          .signInWithEmailAndPassword(email, password);
+        await app.auth().signInWithEmailAndPassword(email, password);
         history.push("/");
       } catch (error) {
         alert(error);
@@ -40,10 +38,10 @@ const Login = ({ history }) => {
   }
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
-  const renderForm =()=>(
+  const renderForm = () => (
     <Form
       name="basic"
       labelCol={{
@@ -65,7 +63,7 @@ const Login = ({ history }) => {
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: "Please input your username!",
           },
         ]}
       >
@@ -78,7 +76,7 @@ const Login = ({ history }) => {
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: "Please input your password!",
           },
         ]}
       >
@@ -107,28 +105,31 @@ const Login = ({ history }) => {
         </Button>
       </Form.Item>
     </Form>
-  )
+  );
   return (
     <div>
       <Card>
-          <StyleRoot>
-      <div class="center_spin" style={styles.bounce}>
-      <Tag style={{
-                  'height': '3rem',
-                  'padding': '0.7rem',
-                  'fontSize': '0.8rem',
-                  'textAlign': 'center'
-                }} icon={<HomeOutlined />} color="#108ee9">
-                        Stealth Apartment Project   
-      
-      <Tag style={{marginLeft:'1rem'}}color="error">If you are not Kaushik || Subham || Binod. Please Don't Login</Tag>
-                </Tag>
+        <StyleRoot>
+          <div class="center_spin" style={styles.bounce}>
+            <Tag
+              style={{
+                height: "3rem",
+                padding: "0.7rem",
+                fontSize: "0.8rem",
+                textAlign: "center",
+              }}
+              icon={<HomeOutlined />}
+              color="#108ee9"
+            >
+              Stealth Apartment Project
+              <Tag style={{ marginLeft: "1rem" }} color="error">
+                If you are not Kaushik || Subham || Binod. Please Don't Login
+              </Tag>
+            </Tag>
+          </div>
+        </StyleRoot>
 
-      </div>
-    </StyleRoot>
-      
-     
-      {renderForm()}
+        {renderForm()}
       </Card>
     </div>
   );
