@@ -58,7 +58,7 @@ const SendFCM = ({ history }) => {
       if (response) {
         openNotification("Success", "Event Added Successfully");
       } else {
-        openNotification("Failed", "Failed to Add Event");
+        openNotification("Failed", "Failed to Add Events");
       }
     });
 
