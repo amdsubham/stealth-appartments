@@ -38,7 +38,7 @@ const openNotification = (title, message) => {
   });
 };
 
-const SendFCM = () => {
+const SendFCM = ({ history }) => {
   useEffect(() => {
     fetchEventsServices();
   }, []);
@@ -186,121 +186,128 @@ const SendFCM = () => {
     );
   };
   return (
-    <Form
-      name="basic"
-      labelCol={{
-        span: 5,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-      onValuesChange={(values) => setFormValues(values)}
-    >
-      <Form.Item
-        label="Event Name"
-        name="eventName"
-        rules={[
-          {
-            required: true,
-            message: "Please input your event name!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Event Address"
-        name="eventAddress"
-        rules={[
-          {
-            required: true,
-            message: "Please input your event address!",
-          },
-        ]}
-      >
-        <TextArea />
-      </Form.Item>
-      <Form.Item
-        label="Latitude"
-        name="latitude"
-        rules={[
-          {
-            required: true,
-            message: "Please input your latitude!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Longitude"
-        name="longitude"
-        rules={[
-          {
-            required: true,
-            message: "Please input your longitude!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Start Date"
-        name="startDate"
-        rules={[
-          {
-            required: true,
-            message: "Please input your start date!",
-          },
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
-      <Form.Item
-        label="End Date"
-        name="endDate"
-        rules={[
-          {
-            required: true,
-            message: "Please input your end date!",
-          },
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
-      <Form.Item
-        label="Time"
-        name="time"
-        rules={[
-          {
-            required: true,
-            message: "Please input your time!",
-          },
-        ]}
-      >
-        <TimePicker use12Hours />
-      </Form.Item>
-      <Form.Item label="Send Push Notification" name="pushNotification">
-        <Switch />
-      </Form.Item>
-      <Form.Item
+    <>
+      <PageHeader
+        onBack={() => history.push("/menu")}
+        title="Manage Events"
+        subTitle="Manage Events and send FCM"
+      />
+      <Form
+        name="basic"
+        labelCol={{
+          span: 5,
+        }}
         wrapperCol={{
-          offset: 8,
           span: 16,
         }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+        onValuesChange={(values) => setFormValues(values)}
       >
-        {formValues.pushNotification && showPushNotificationForm()}
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item
+          label="Event Name"
+          name="eventName"
+          rules={[
+            {
+              required: true,
+              message: "Please input your event name!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Event Address"
+          name="eventAddress"
+          rules={[
+            {
+              required: true,
+              message: "Please input your event address!",
+            },
+          ]}
+        >
+          <TextArea />
+        </Form.Item>
+        <Form.Item
+          label="Latitude"
+          name="latitude"
+          rules={[
+            {
+              required: true,
+              message: "Please input your latitude!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Longitude"
+          name="longitude"
+          rules={[
+            {
+              required: true,
+              message: "Please input your longitude!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Start Date"
+          name="startDate"
+          rules={[
+            {
+              required: true,
+              message: "Please input your start date!",
+            },
+          ]}
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          label="End Date"
+          name="endDate"
+          rules={[
+            {
+              required: true,
+              message: "Please input your end date!",
+            },
+          ]}
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          label="Time"
+          name="time"
+          rules={[
+            {
+              required: true,
+              message: "Please input your time!",
+            },
+          ]}
+        >
+          <TimePicker use12Hours />
+        </Form.Item>
+        <Form.Item label="Send Push Notification" name="pushNotification">
+          <Switch />
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          {formValues.pushNotification && showPushNotificationForm()}
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 

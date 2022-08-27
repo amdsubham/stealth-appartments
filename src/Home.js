@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import apartmentLogo from "./default_apartment_logo.jpeg";
-import app from "./base";
+import { getAuth, signOut } from "firebase/auth";
+
 import {
   Card,
   Col,
@@ -30,6 +31,7 @@ import {
 import JSONInput from "react-json-editor-ajrm";
 import locale from "react-json-editor-ajrm/locale/en";
 import { apartmentMockData } from "./MockAppData";
+import { auth } from "./base";
 
 const renderAppartments = (ApartmentsData) => {
   return ApartmentsData.map((item, index) => (
@@ -113,6 +115,8 @@ const renderAppartments = (ApartmentsData) => {
 };
 
 const Home = ({ history }) => {
+  const auth = getAuth();
+
   const [ApartmentsData, setApartmentsData] = useState([]);
   const [pageLoading, setPageLoading] = useState(false);
   useEffect(() => {
@@ -152,7 +156,7 @@ const Home = ({ history }) => {
               className="site-page-header"
               onBack={() => window.history.back()}
               title="Apartment Details"
-              subTitle="This Page has only access to Kaushik || Subham || Binod"
+              subTitle="This Page has only access to PrimePrenures"
               extra={[
                 <Button
                   key="2"
@@ -166,7 +170,15 @@ const Home = ({ history }) => {
                 </Button>,
                 <Button
                   key="1"
-                  onClick={() => app.auth().signOut()}
+                  onClick={() => {
+                    signOut(auth)
+                      .then(() => {
+                        history.push("/login");
+                      })
+                      .catch((error) => {
+                        console.log("An error happened", error);
+                      });
+                  }}
                   type="ghost"
                   shape="round"
                   icon={<LogoutOutlined />}

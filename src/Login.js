@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import app from "./base.js";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import { AuthContext } from "./Auth.js";
 import "antd/dist/antd.css";
 import "./index.css";
@@ -18,15 +19,17 @@ const styles = {
 };
 
 const Login = ({ history }) => {
+  const auth = getAuth();
   const handleLogin = useCallback(
     async (event) => {
       const { email, password } = event;
-      try {
-        await app.auth().signInWithEmailAndPassword(email, password);
-        history.push("/");
-      } catch (error) {
-        alert(error);
-      }
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          history.push("/menu");
+        })
+        .catch((error) => {
+          console.log("error:--", error);
+        });
     },
     [history]
   );
@@ -123,7 +126,7 @@ const Login = ({ history }) => {
             >
               Stealth Apartment Project
               <Tag style={{ marginLeft: "1rem" }} color="error">
-                If you are not Kaushik || Subham || Binod. Please Don't Login
+                If you are not PrimePrenures. Please Don't Login
               </Tag>
             </Tag>
           </div>

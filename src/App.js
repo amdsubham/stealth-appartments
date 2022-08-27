@@ -16,6 +16,7 @@ const App = () => {
       <Router>
         <div>
           <PrivateRoute exact path="/" component={Menu} />
+          <Route exact path="/menu" component={Menu} />
           <Route exact path="/apartmentGallary" component={Home} />
           <Route exact path="/manageEvents" component={SendFCM} />
           <Route exact path="/login" component={Login} />
