@@ -89,7 +89,7 @@ const SendFCM = ({ history }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-    openNotification("Failed", "Failed to Add Events");
+    openNotification("Failed", "Failed to Add Event");
   };
 
   const fetchEventsServices = async () => {
