@@ -8,15 +8,6 @@ import "./index.css";
 import "./App.css";
 import { Form, Input, Button, Checkbox, Card, Tag } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
-import { bounce } from "react-animations";
-import Radium, { StyleRoot } from "radium";
-
-const styles = {
-  bounce: {
-    animation: "x 1s",
-    animationName: Radium.keyframes(bounce, "bounce"),
-  },
-};
 
 const Login = ({ history }) => {
   const auth = getAuth();
@@ -112,8 +103,8 @@ const Login = ({ history }) => {
   return (
     <div>
       <Card>
-        <StyleRoot>
-          <div class="center_spin" style={styles.bounce}>
+
+          <div class="center_spin" >
             <Tag
               style={{
                 height: "3rem",
@@ -130,8 +121,6 @@ const Login = ({ history }) => {
               </Tag>
             </Tag>
           </div>
-        </StyleRoot>
-
         {renderForm()}
       </Card>
     </div>
