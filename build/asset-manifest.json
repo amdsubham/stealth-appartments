@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0e0e5ca2.css",
+    "main.js": "/static/js/main.4c214d70.js",
+    "static/media/pc_gif.gif": "/static/media/pc_gif.db90b9051e924005d712.gif",
+    "static/media/default_apartment_logo.jpeg": "/static/media/default_apartment_logo.791d64b34a4832c05ba5.jpeg",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.0e0e5ca2.css",
+    "static/js/main.4c214d70.js"
+  ]
+}
