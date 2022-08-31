@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout
       - run: ssh -oStrictHostKeyChecking=no -v -t $USER@$IP "./deploy.sh"
+      - password: $PSWD
 
 # Orchestrate our job run sequence
 workflows:
