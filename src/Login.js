@@ -117,7 +117,7 @@ const Login = ({ history }) => {
             >
               Stealth Apartment Project
               <Tag style={{ marginLeft: "1rem" }} color="error">
-                If you are not **PrimePrenures**. Please Don't Login
+                If you are not *-PrimePrenures-*. Please Don't Login
               </Tag>
             </Tag>
           </div>
