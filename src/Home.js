@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import apartmentLogo from "./default_apartment_logo.jpeg";
 import { getAuth, signOut } from "firebase/auth";
-
+import axios from "axios";
 import {
   Card,
   Col,
@@ -140,7 +140,27 @@ const Home = ({ history }) => {
     //     setPageLoading(false);
     //   }
     // });
-    setApartmentsData(apartmentMockData);
+
+    // Tabletop.init({
+    //   key: 'https://docs.google.com/spreadsheets/d/0AmYzu_s7QHsmdDNZUzRlYldnWTZCLXdrMXlYQzVxSFE/pubhtml',
+    //   simpleSheet: true
+    // }
+    // ).then(function (data, tabletop) {
+    //   console.log('Heyyyyy', data)
+    // })
+    //setApartmentsData(apartmentMockData)
+    setPageLoading(true);
+    axios.get(ALL_APPARTMENTS_FETCH_LINK).then(
+      (response) => {
+        var { list } = response.data;
+        setApartmentsData(list)
+        setPageLoading(false);
+      },
+      (error) => {
+        console.log(error);
+        setPageLoading(false);
+      }
+    );
   }, []);
 
   return (
