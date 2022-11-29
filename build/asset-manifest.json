@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.4e17cfb8.css",
-    "main.js": "/static/js/main.cb36eaeb.js",
+    "main.js": "/static/js/main.2cbdd9aa.js",
     "static/media/pc_gif.gif": "/static/media/pc_gif.db90b9051e924005d712.gif",
     "static/media/default_apartment_logo.jpeg": "/static/media/default_apartment_logo.791d64b34a4832c05ba5.jpeg",
     "index.html": "/index.html"
   },
   "entrypoints": [
     "static/css/main.4e17cfb8.css",
-    "static/js/main.cb36eaeb.js"
+    "static/js/main.2cbdd9aa.js"
   ]
 }
